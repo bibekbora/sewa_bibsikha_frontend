@@ -180,9 +180,15 @@ const About = () => {
             </Reveal>
             <Reveal delay={80}>
               <TiltCard className="team-card">
-                <span className="team-card__avatar team-card__avatar--initials" aria-hidden="true">
-                  SMB
-                </span>
+                <img
+                  className="team-card__avatar"
+                  src="/images/sikha.jpeg"
+                  alt="Sikha Moni Bora"
+                  width={160}
+                  height={160}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <h3>Sikha Moni Bora</h3>
               </TiltCard>
             </Reveal>
