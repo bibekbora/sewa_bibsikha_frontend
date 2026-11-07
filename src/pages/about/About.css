@@ -238,7 +238,7 @@
 
 .about-team {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   align-items: stretch;
 }
@@ -262,19 +262,25 @@
 }
 
 .team-card__avatar {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
   margin-bottom: 14px;
-  display: grid;
-  place-items: center;
   border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
   background: linear-gradient(140deg, var(--green-700), var(--green-900));
-  color: var(--gold-400);
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 800;
   box-shadow: 0 0 0 6px var(--gold-200);
   transform: translateZ(30px);
+}
+
+.team-card__avatar--initials {
+  display: grid;
+  place-items: center;
+  color: var(--gold-400);
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
 }
 
 .team-card h3 {
@@ -288,6 +294,7 @@
 }
 
 .about-team__expertise {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
@@ -339,12 +346,10 @@
     gap: 40px;
   }
 
-  .about-team {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 560px) {
+  .about-team,
   .about-team__expertise {
     grid-template-columns: 1fr;
   }

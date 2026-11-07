@@ -61,13 +61,6 @@ const Home = () => {
 
         <div className="container hero__inner">
           <div className="hero__content">
-            <Reveal>
-              <span className="hero__pill">
-                <span className="hero__pill-dot" />
-                {brand.tagline}
-              </span>
-            </Reveal>
-
             <h1 className="display-xl hero__title" key={persona}>
               {lead} <span className="text-gradient">{tail}</span>
             </h1>
@@ -357,10 +350,18 @@ const Home = () => {
               adaptation.
             </p>
             <div className="home-quote__author">
-              <span className="home-quote__avatar">BB</span>
+              <img
+                className="home-quote__avatar"
+                src={brand.chairman.photo}
+                alt={brand.chairman.name}
+                width={52}
+                height={52}
+                loading="lazy"
+                decoding="async"
+              />
               <div>
-                <strong>{brand.ceo}</strong>
-                <span>CEO, Bibsikha</span>
+                <strong>{brand.chairman.name}</strong>
+                <span>Chairman, {brand.name}</span>
               </div>
             </div>
             <div>

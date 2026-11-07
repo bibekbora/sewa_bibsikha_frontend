@@ -49,7 +49,10 @@ export const brand = {
   name: "Bibsikha",
   legalName: "Bibsikha LLP",
   tagline: "A Climate Change Mitigation and Advisory Group",
-  ceo: "Bibek Bora",
+  chairman: {
+    name: "Bibek Bora",
+    photo: "/images/bibek.png",
+  },
 };
 
 export const navLinks = [

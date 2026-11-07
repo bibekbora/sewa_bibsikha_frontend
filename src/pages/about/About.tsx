@@ -165,9 +165,25 @@ const About = () => {
           <div className="about-team">
             <Reveal>
               <TiltCard className="team-card team-card--lead">
-                <span className="team-card__avatar">BB</span>
-                <h3>{brand.ceo}</h3>
-                <span>CEO, Bibsikha</span>
+                <img
+                  className="team-card__avatar"
+                  src={brand.chairman.photo}
+                  alt={brand.chairman.name}
+                  width={160}
+                  height={160}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <h3>{brand.chairman.name}</h3>
+                <span>Chairman, {brand.name}</span>
+              </TiltCard>
+            </Reveal>
+            <Reveal delay={80}>
+              <TiltCard className="team-card">
+                <span className="team-card__avatar team-card__avatar--initials" aria-hidden="true">
+                  SMB
+                </span>
+                <h3>Sikha Moni Bora</h3>
               </TiltCard>
             </Reveal>
             <div className="about-team__expertise">
