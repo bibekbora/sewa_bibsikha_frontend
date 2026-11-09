@@ -51,7 +51,7 @@ export const brand = {
   tagline: "A Climate Change Mitigation and Advisory Group",
   chairman: {
     name: "Bibek Bora",
-    photo: "/images/bibek.png",
+    photo: "/images/bibek_borah.jpeg",
   },
 };
 
@@ -360,6 +360,82 @@ export const teamExpertise: { title: string; icon: IconName }[] = [
   { title: "Education & Technology Development", icon: "cpu" },
   { title: "Cultural & Research-Oriented Programs", icon: "award" },
   { title: "Carbon Credit Trading", icon: "coins" },
+];
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  position: string;
+  photo: string;
+  roles: string[];
+  intro: string[];
+  sections: { title: string; paragraphs?: string[]; items?: string[] }[];
+}
+
+export const teamMembers: TeamMember[] = [
+  {
+    id: "bibek-bora",
+    name: "Mr. Bibek Bora",
+    position: "Chief Executive Officer (CEO)",
+    photo: "/images/bibek_borah.jpeg",
+    roles: ["Chief Executive Officer | BIBSIKHA LLP", "Social Entrepreneur", "Climate & Sustainability Professional"],
+    intro: [
+      "Bibek Bora is a social entrepreneur and development professional with over 12 years of experience in grassroots development, environmental sustainability, climate change initiatives and community-based programmes. As the Chief Executive Officer of BIBSIKHA LLP, he leads initiatives focused on climate change mitigation, natural resource conservation, climate finance and sustainable development.",
+      "With extensive experience in designing and implementing community-driven programmes, his areas of expertise include Nature-Based Solutions (NbS), carbon project development, carbon market management, clean energy, sustainable livelihoods and environmental conservation.",
+      "He is committed to bridging the gap between climate solutions and grassroots implementation by connecting communities, institutions and development partners to create measurable environmental and socio-economic impact.",
+      "With a vision for sustainable and inclusive development, Bibek continues to work towards innovative climate solutions that protect the environment, promote responsible resource management and contribute to a greener future.",
+    ],
+    sections: [
+      {
+        title: "Awards & Recognition",
+        items: [
+          "The Best Grass Root Model Award (2021) – Social Entrepreneurship Category, presented at the India International Science Festival, Goa.",
+          "Green Enterprise of the Year (2022) – Awarded to BIBSIKHA LLP by News18 Assam.",
+          "Xomaj Hitoxoi Award (2025) – Recognised by Sahitya Sanskriti Sadhana Moncho, Golaghat, Assam.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "sikhamoni-bora",
+    name: "Dr. Sikhamoni Bora",
+    position: "Designated Partner",
+    photo: "/images/sikha.jpeg",
+    roles: [
+      "Researcher",
+      "Forestry & Agroforestry Specialist",
+      "Plant Pathology",
+      "Sustainable Livelihood & Development",
+    ],
+    intro: [
+      "Dr. Sikhamoni Bora is a researcher with academic expertise in Botany, Forestry, Agroforestry, and Plant Pathology, with a strong professional background in ecological research, sustainable plantation practices, and community-based livelihood development. She has successfully completed her Ph.D. research at the Forest Research Institute (FRI), Dehradun, under FRI University, focusing on Aquilaria malaccensis—an economically important plant species widely recognised for its aromatic, medicinal, and agroforestry potential. She holds a Master of Science (M.Sc.) degree in Botany from Cotton University, Assam.",
+    ],
+    sections: [
+      {
+        title: "Research and Professional Experience",
+        paragraphs: [
+          "Dr. Bora has contributed to several research and development projects under the Indian Council of Forestry Research and Education (ICFRE) and the Ministry of Environment, Forest and Climate Change (MoEFCC) at the Rain Forest Research Institute (RFRI), Jorhat.",
+          "Her professional experience includes working on plantation development programmes, field surveys, and monitoring activities related to forestry and agroforestry across various districts of Northeast India. She has been actively involved in assessing pest and disease incidence in plantation sites, evaluating the physicochemical and biological properties of soil, and supporting research on sustainable forest management practices.",
+          "Her research experience also includes the isolation, purification, and identification of fungal species, along with the development of artificial inoculants for agarwood induction. She has practical knowledge of various plant pathology techniques and has contributed to scientific documentation, project reports, and research-based activities.",
+        ],
+      },
+      {
+        title: "Research Publications and Academic Contributions",
+        paragraphs: [
+          "Dr. Bora has participated in several national and international seminars, workshops, and academic programmes organised by reputed government institutions and research organisations. She has presented her research findings at more than four national and international seminars.",
+          "Her academic contributions include five published research abstracts, one full-length research paper, one book chapter, and an article published through a reputed journal and publishing house.",
+        ],
+      },
+      {
+        title: "Entrepreneurship and Institutional Engagement",
+        paragraphs: [
+          "Dr. Sikhamoni Bora is also a Designated Partner of BIBSIKHA LLP, an organisation engaged in livelihood management, women's empowerment, education, technology development, cultural initiatives, research-oriented programmes, and carbon management.",
+          "Through her association with BIBSIKHA LLP, she contributes her scientific knowledge, research experience, and practical understanding of forestry and agroforestry to initiatives that connect environmental sustainability with community development and economic opportunities.",
+          "Her professional vision centres on promoting scientific research, sustainable natural resource management, women's participation, and livelihood opportunities while strengthening the relationship between environmental conservation and inclusive development.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const cookingFacts = [

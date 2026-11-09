@@ -249,39 +249,290 @@
 
 .team-card {
   height: 100%;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  border: 1px solid var(--line);
+  text-align: center;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s;
+}
+
+.team-card:hover {
+  border-color: var(--green-200);
+  box-shadow: var(--shadow-lg);
+}
+
+.team-card__trigger {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 6px;
   padding: 36px 24px;
-  border-radius: var(--radius-lg);
-  background: var(--white);
-  border: 1px solid var(--line);
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  font: inherit;
+  color: inherit;
   text-align: center;
+  cursor: pointer;
+}
+
+.team-card__trigger:focus-visible {
+  outline: 3px solid var(--gold-400);
+  outline-offset: 4px;
+}
+
+.team-card__media {
+  position: relative;
+  display: block;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  transform: translateZ(30px);
 }
 
 .team-card__avatar {
+  display: block;
   width: 160px;
   height: 160px;
   flex-shrink: 0;
-  margin-bottom: 14px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
   background: linear-gradient(140deg, var(--green-700), var(--green-900));
   box-shadow: 0 0 0 6px var(--gold-200);
-  transform: translateZ(30px);
 }
 
-.team-card h3 {
+.team-card__hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 50%;
+  background: rgba(11, 61, 46, 0.78);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.team-card__trigger:hover .team-card__hint,
+.team-card__trigger:focus-visible .team-card__hint {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.team-card__name {
+  font-family: var(--font-display);
   font-size: 24px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--green-900);
 }
 
-.team-card span:last-child {
+.team-card__position {
   font-size: 14px;
   font-weight: 600;
   color: var(--gold-600);
+}
+
+.team-card__roles {
+  max-width: 320px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.team-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-800);
+  transition: background 0.3s, color 0.3s;
+}
+
+.team-card__trigger:hover .team-card__more {
+  background: var(--green-800);
+  color: var(--white);
+}
+
+/* ---------- Profile modal ---------- */
+
+.profile-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(6, 38, 25, 0.6);
+  backdrop-filter: blur(4px);
+  animation: profile-fade 0.25s ease-out;
+}
+
+.profile-modal__dialog {
+  position: relative;
+  width: min(820px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  animation: profile-rise 0.35s var(--ease);
+}
+
+.profile-modal__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.profile-modal__close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.profile-modal__header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 40px 72px 36px 40px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(232, 185, 49, 0.25), transparent 45%),
+    linear-gradient(150deg, var(--green-700), var(--green-900));
+  color: var(--white);
+}
+
+.profile-modal__avatar {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 0 0 5px var(--gold-400);
+}
+
+.profile-modal__position {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--gold-500);
+  color: var(--green-950);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-modal__header h2 {
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--white);
+}
+
+.profile-modal__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--green-200);
+}
+
+.profile-modal__roles li + li::before {
+  content: "•";
+  margin-right: 14px;
+  color: var(--gold-400);
+}
+
+.profile-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 36px 40px 44px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.profile-modal__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.profile-modal__section h3 {
+  font-size: 20px;
+  color: var(--green-900);
+}
+
+.profile-modal__list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-modal__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: var(--gold-100);
+  border: 1px solid var(--gold-200);
+}
+
+.profile-modal__list li > span {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--gold-500);
+  color: var(--green-950);
+}
+
+@keyframes profile-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes profile-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
 }
 
 .about-team__expertise {
@@ -343,6 +594,29 @@
   .about-team,
   .about-team__expertise {
     grid-template-columns: 1fr;
+  }
+
+  .profile-modal {
+    padding: 12px;
+  }
+
+  .profile-modal__dialog {
+    max-height: calc(100vh - 24px);
+  }
+
+  .profile-modal__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 32px 24px 28px;
+  }
+
+  .profile-modal__header h2 {
+    font-size: 26px;
+  }
+
+  .profile-modal__body {
+    padding: 28px 24px 32px;
   }
 }
 

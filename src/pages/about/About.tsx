@@ -1,13 +1,19 @@
+import { useCallback, useState } from "react";
 import CountUp from "../../components/CountUp";
 import Icon from "../../components/Icon";
 import PageHero from "../../components/PageHero";
 import Reveal from "../../components/Reveal";
 import SectionHeading from "../../components/SectionHeading";
 import TiltCard from "../../components/TiltCard";
-import { brand, dimensions, regions, strengths, teamExpertise } from "../../data/siteContent";
+import { brand, dimensions, regions, strengths, teamExpertise, teamMembers } from "../../data/siteContent";
+import type { TeamMember } from "../../data/siteContent";
+import TeamProfileModal from "./TeamProfileModal";
 import "./About.css";
 
 const About = () => {
+  const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
+  const closeProfile = useCallback(() => setActiveMember(null), []);
+
   return (
     <>
       <PageHero
@@ -163,35 +169,42 @@ const About = () => {
             lead="We are backed by a team of skilled and dedicated personnel with hands-on experience across these fields."
           />
           <div className="about-team">
-            <Reveal>
-              <TiltCard className="team-card team-card--lead">
-                <img
-                  className="team-card__avatar"
-                  src={brand.chairman.photo}
-                  alt={brand.chairman.name}
-                  width={160}
-                  height={160}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <h3>{brand.chairman.name}</h3>
-                <span>Chairman, {brand.name}</span>
-              </TiltCard>
-            </Reveal>
-            <Reveal delay={80}>
-              <TiltCard className="team-card">
-                <img
-                  className="team-card__avatar"
-                  src="/images/sikha.jpeg"
-                  alt="Sikha Moni Bora"
-                  width={160}
-                  height={160}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <h3>Sikha Moni Bora</h3>
-              </TiltCard>
-            </Reveal>
+            {teamMembers.map((member, index) => (
+              <Reveal key={member.id} delay={index * 80}>
+                <TiltCard className={`team-card${index === 0 ? " team-card--lead" : ""}`}>
+                  <button
+                    type="button"
+                    className="team-card__trigger"
+                    onClick={() => setActiveMember(member)}
+                    aria-label={`View profile of ${member.name}`}
+                  >
+                    <span className="team-card__media">
+                      <img
+                        className="team-card__avatar"
+                        src={member.photo}
+                        alt={member.name}
+                        width={160}
+                        height={160}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span className="team-card__hint" aria-hidden="true">
+                        <Icon name="eye" size={22} />
+                        View profile
+                      </span>
+                    </span>
+                    <span className="team-card__name">{member.name}</span>
+                    <span className="team-card__position">
+                      {member.position}, {brand.name}
+                    </span>
+                    <span className="team-card__roles">{member.roles.slice(0, 2).join(" · ")}</span>
+                    <span className="team-card__more">
+                      More info <Icon name="plus" size={16} />
+                    </span>
+                  </button>
+                </TiltCard>
+              </Reveal>
+            ))}
             <div className="about-team__expertise">
               {teamExpertise.map((item, index) => (
                 <Reveal key={item.title} delay={index * 80} className="about-team__skill">
@@ -205,6 +218,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <TeamProfileModal member={activeMember} onClose={closeProfile} />
     </>
   );
 };

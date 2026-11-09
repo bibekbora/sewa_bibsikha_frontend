@@ -361,7 +361,7 @@ const Home = () => {
               />
               <div>
                 <strong>{brand.chairman.name}</strong>
-                <span>Chairman, {brand.name}</span>
+                <span>Chief Executive Officer (CEO), {brand.name}</span>
               </div>
             </div>
             <div>
