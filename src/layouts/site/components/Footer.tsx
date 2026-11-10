@@ -3,6 +3,25 @@ import Icon from "../../../components/Icon";
 import { brand, contactInfo, navLinks, services } from "../../../data/siteContent";
 import Logo from "./Logo";
 
+const policies = [
+  {
+    label: "Anti-Bribery and Anti-Corruption Policy",
+    file: "Anti-Bribery And Anti-Corruption Policy BIBSIKHA LLP.pdf",
+  },
+  {
+    label: "Anti-Slavery Policy",
+    file: "Anti-slavery Policy BIBSIKHA LLP.pdf",
+  },
+  {
+    label: "Non-Discrimination and Equal Opportunity Policy",
+    file: "Non-discrimination and equal opportunity policy BIBSIKHA LLP.pdf",
+  },
+  {
+    label: "Prohibition of Child and Forced Labour",
+    file: "Prohibition of Child and Forced Labour BIBSIKHA LLP.pdf",
+  },
+];
+
 const Footer = () => {
   return (
     <footer className="site-footer">
@@ -71,6 +90,19 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="site-footer__policies">
+          <h4 className="site-footer__title">Policies</h4>
+          <ul className="site-footer__policy-list">
+            {policies.map((policy) => (
+              <li key={policy.file}>
+                <a href={encodeURI(`/docs/${policy.file}`)} target="_blank" rel="noopener noreferrer">
+                  {policy.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="site-footer__bottom">
